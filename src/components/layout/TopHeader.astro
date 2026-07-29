@@ -3,72 +3,106 @@ const { title, date, subtitle } = Astro.props;
 ---
 
 <section>
-    <div class="header__title" transition:name="header">
-        <a href="/"><h1 class="header__title__name">{ title }</h1></a>
-        <div class="header__title_subtitle">
-            <p class="header__title__subtitle__date">{ date }</p>
-            <h2 class="header__title_subtitle__profession">{ subtitle }</h2>
-        </div>
-    </div>
-    <hr>
+	<div class="header__title" transition:name="header">
+		<a href="/"><h1 class="header__title__name">{ title }</h1></a>
+		<div class="header__title_subtitle">
+			<p class="header__title__subtitle__date">{ date }</p>
+			<h2 class="header__title_subtitle__profession">{ subtitle }</h2>
+		</div>
+	</div>
+	<hr>
+	<nav class="header__nav">
+		<a href="/about">About</a>
+		<a href="/experience">Experience</a>
+		<a href="/#projects">Projects</a>
+		<a href="/#blog">Blog</a>
+	</nav>
+	<hr>
 </section>
 
-<style>  
+<style>
 
-    .header__title {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-    }
+	.header__title {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+	}
 
-    .header__title__name {
-        font-size: 3.5rem;
-    }
+	.header__title__name {
+		font-size: 3.5rem;
+	}
 
-    .header__title__subtitle {
-        justify-content: end;
-        text-align:end;
-    }
+	.header__title__subtitle {
+		justify-content: end;
+		text-align:end;
+	}
 
-    .header__title__subtitle__date {
-        color: var(--primary-color);
-        font-size: 2rem;
-        text-align: end;
-        line-height: 1.1;
-    }
-    
-    .header__title_subtitle__profession {
-        font-size: 0.8rem; 
-    }
+	.header__title__subtitle__date {
+		color: var(--primary-color);
+		font-size: 2rem;
+		text-align: end;
+		line-height: 1.1;
+	}
+
+	.header__title_subtitle__profession {
+		font-size: 0.8rem;
+	}
+
+	.header__nav {
+		display: flex;
+		justify-content: center;
+		gap: 1.5rem;
+		padding: 0.5rem 0rem;
+	}
+
+	.header__nav a {
+		font-family: "Rosario", sans-serif;
+		text-transform: uppercase;
+		font-size: 0.75rem;
+		letter-spacing: 0.15rem;
+		color: var(--secundary-text);
+		transition: color 0.2s;
+	}
+
+	.header__nav a:hover {
+		color: var(--primary-color);
+	}
+
+	@media only screen and (min-width: 480px) {
+		.header__title__name {
+			font-size: 4.5rem;
+		}
+
+		.header__title__subtitle__date {
+			font-size: 3rem;
+		}
+
+		.header__title_subtitle__profession {
+			font-size: 1rem;
+		}
+
+		.header__nav {
+			gap: 2rem;
+		}
+
+		.header__nav a {
+			font-size: 0.85rem;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		.header__title__name {
+			font-size: 5rem;
+		}
+
+		.header__title__subtitle__date {
+			font-size: 4rem;
+		}
+
+		.header__title_subtitle__profession {
+			font-size: 1rem;
+		}
+	}
 
 
-    @media only screen and (min-width: 480px) {
-        .header__title__name {
-            font-size: 4.5rem;
-        }
-
-        .header__title__subtitle__date {
-            font-size: 3rem;
-        }
-
-        .header__title_subtitle__profession {
-            font-size: 1rem;
-        }
-    }
-
-    @media only screen and (min-width: 768px) {
-        .header__title__name {
-            font-size: 5rem;
-        }
-
-        .header__title__subtitle__date {
-            font-size: 4rem;
-        }
-
-        .header__title_subtitle__profession {
-            font-size: 1rem;
-        }
-    }
-
-    
 </style>

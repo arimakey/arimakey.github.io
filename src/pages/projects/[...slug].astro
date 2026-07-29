@@ -1,0 +1,166 @@
+---
+import { getCollection } from 'astro:content';
+import Layout from '../../layouts/Layout.astro';
+import TextureFilter from '../../components/TextureFilter.astro';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+	return projects.map((project) => ({
+		params: { slug: project.id.split('/').pop()!.replace('.mdx', '') },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await project.render();
+---
+
+<Layout title={project.data.title} description={project.data.description} image={project.data.heroImage}>
+	<main class="project-detail">
+		<hr>
+		<header class="project-detail__header">
+			<time class="project-detail__date" datetime={project.data.pubDate.toISOString()}>
+				{project.data.pubDate.toLocaleDateString('en-US', {
+					year: 'numeric',
+					month: 'long',
+				})}
+			</time>
+			<h1>{project.data.title}</h1>
+			<p class="project-detail__description">{project.data.description}</p>
+		</header>
+		<hr>
+		<div class="project-detail__image">
+			<TextureFilter src={project.data.heroImage} transition={`project-${project.data.title}`} />
+		</div>
+		<hr>
+		<article class="project-detail__content">
+			<Content />
+		</article>
+		{
+			project.data.link && (
+				<a href={project.data.link} class="large__button" target="_blank">
+					<ion-icon name="link-outline"></ion-icon>
+					View Project
+				</a>
+			)
+		}
+		{
+			project.data.tags && project.data.tags.length > 0 && (
+				<div class="project-detail__tags">
+					{
+						project.data.tags.map((tag: string) => (
+							<span class="project-detail__tag">{tag}</span>
+						))
+					}
+				</div>
+			)
+		}
+		<hr>
+		<footer class="project-detail__footer">
+			<a href="/" class="large__button large__button--transparent">
+				<ion-icon name="arrow-back-outline"></ion-icon>
+				Back to Home
+			</a>
+		</footer>
+	</main>
+</Layout>
+
+<style>
+	.project-detail {
+		display: flex;
+		flex-direction: column;
+		gap: 1.5rem;
+		margin: 2rem 0rem;
+	}
+
+	.project-detail__header {
+		text-align: center;
+	}
+
+	.project-detail__header h1 {
+		font-size: 2rem;
+		margin: 1rem 0rem;
+	}
+
+	.project-detail__date {
+		font-family: "Rosario", sans-serif;
+		font-style: italic;
+		color: var(--secundary-text);
+		font-size: 0.9rem;
+	}
+
+	.project-detail__description {
+		font-family: "Rosario", sans-serif;
+		font-size: 1rem;
+		color: var(--secundary-text);
+		margin-top: 0.5rem;
+	}
+
+	.project-detail__image {
+		width: 100%;
+		height: 16rem;
+		overflow: hidden;
+	}
+
+	.project-detail__content {
+		font-family: "Rosario", sans-serif;
+		line-height: 1.8;
+		padding: 0 1rem;
+	}
+
+	.project-detail__content :global(h2) {
+		font-family: "Nova Round", system-ui;
+		font-size: 1.5rem;
+		margin: 2rem 0 0.5rem 0;
+		padding-bottom: 0.25rem;
+		border-bottom: 2px solid var(--primary-color);
+	}
+
+	.project-detail__content :global(p) {
+		margin-bottom: 1rem;
+		font-size: 1rem;
+	}
+
+	.project-detail__content :global(ul) {
+		margin: 0.5rem 0 1rem 1.5rem;
+	}
+
+	.project-detail__content :global(li) {
+		margin-bottom: 0.25rem;
+	}
+
+	.project-detail__tags {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		justify-content: center;
+	}
+
+	.project-detail__tag {
+		background: var(--primary-color);
+		color: var(--contrast-text);
+		padding: 0.25rem 0.75rem;
+		font-size: 0.8rem;
+		font-family: "Rosario", sans-serif;
+	}
+
+	.project-detail__footer {
+		display: flex;
+		justify-content: center;
+		padding-top: 1rem;
+	}
+
+	@media only screen and (min-width: 768px) {
+		.project-detail__header h1 {
+			font-size: 3rem;
+		}
+
+		.project-detail__content {
+			padding: 0 3rem;
+		}
+
+		.project-detail__image {
+			height: 24rem;
+		}
+	}
+</style>

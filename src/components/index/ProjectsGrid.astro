@@ -2,17 +2,12 @@
 import { getCollection } from 'astro:content';
 import { DEFAULT_PROJECTS } from '../../consts'
 
-import { getLangFromUrl, useTranslations } from '../../i18n/utils';
-
 import Project from './Project.astro';
-import { getRelativeLocaleUrl } from 'astro:i18n';
 
-const lang = getLangFromUrl(Astro.url);
-
-const projects = (await getCollection('projects', ({ id }) => { return id.startsWith(lang) })).slice(0, 3);
+const projects = (await getCollection('projects')).slice(0, 3);
 const project_rest = 3 - projects.length;
 ---
-<section class="project">
+<section class="project" id="projects">
     <h3 class="project__title">
         Projects
     </h3>
@@ -20,7 +15,7 @@ const project_rest = 3 - projects.length;
         <div class="project__content__container">
             {
                 projects.map(project => (
-                    <Project image={project.data.heroImage}  title={project.data.title} slug={project.data.link} />
+                    <Project image={project.data.heroImage}  title={project.data.title} slug={`/projects/${project.id.split('/').pop()!.replace('.mdx', '')}`} />
                 ))
             }
             {

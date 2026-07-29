@@ -1,0 +1,93 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="404 — Page Not Found" description="This page does not exist">
+	<main class="not-found">
+		<hr>
+		<div class="not-found__content">
+			<h1 class="not-found__title">EXTRA! EXTRA!</h1>
+			<div class="not-found__divider">
+				<hr><span>PAGE NOT FOUND</span><hr>
+			</div>
+			<p class="not-found__body">
+				We sent our best journalists to investigate, but the page you are looking for
+				has vanished without a trace. Perhaps it never existed at all.
+			</p>
+			<p class="not-found__sub">
+				While our editors figure out what happened, why not return to the front page?
+			</p>
+			<a href="/" class="large__button">
+				<ion-icon name="newspaper-outline"></ion-icon>
+				Back to Front Page
+			</a>
+		</div>
+		<hr>
+	</main>
+</Layout>
+
+<style>
+	.not-found {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin: 2rem 0rem;
+		min-height: 50vh;
+		justify-content: center;
+	}
+
+	.not-found__content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1.5rem;
+		text-align: center;
+		padding: 2rem 1rem;
+	}
+
+	.not-found__title {
+		font-size: 3rem;
+		font-family: "Nova Round", system-ui;
+		color: var(--primary-color);
+		letter-spacing: 0.5rem;
+	}
+
+	.not-found__divider {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		width: 100%;
+	}
+
+	.not-found__divider span {
+		font-family: "Rosario", sans-serif;
+		font-style: italic;
+		font-size: 0.9rem;
+		color: var(--secundary-text);
+		white-space: nowrap;
+	}
+
+	.not-found__divider hr {
+		flex: 1;
+	}
+
+	.not-found__body {
+		font-family: "Rosario", sans-serif;
+		font-size: 1rem;
+		max-width: 32rem;
+		line-height: 1.8;
+	}
+
+	.not-found__sub {
+		font-family: "Rosario", sans-serif;
+		font-style: italic;
+		font-size: 0.9rem;
+		color: var(--secundary-text);
+	}
+
+	@media only screen and (min-width: 768px) {
+		.not-found__title {
+			font-size: 5rem;
+		}
+	}
+</style>

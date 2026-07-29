@@ -1,24 +1,29 @@
 const technologies = {
     "en": [
         {
-            "first_title": "Web",
+            "first_title": "Frontend",
             "second_title": "TECHNOLOGIES",
-            "icons": [ "html", "css", "javascript", "tailwind", "react", "nextjs" ]
+            "icons": [ "html", "css", "javascript", "typescript", "tailwind", "react", "nextjs" ]
         },
         {
-            "first_title": "Software",
-            "second_title": "DEPLOYMENT",
-            "icons": [ "cpp", "java" ]
+            "first_title": "Backend",
+            "second_title": "TECHNOLOGIES",
+            "icons": [ "java", "bash", "docker", "git", "github" ]
         },
         {
-            "first_title": "Deployment and",
-            "second_title": "VERSION CONTROL",
-            "icons": [ "heroku", "docker", "git", "github" ]
+            "first_title": "Databases",
+            "second_title": "& STORAGE",
+            "icons": [ "postgresql", "mongodb" ]
         },
         {
-            "first_title": "Scripting",
-            "second_title": "AUTOMATIZATION",
-            "icons": [ "bash"]
+            "first_title": "Cloud &",
+            "second_title": "INFRASTRUCTURE",
+            "icons": [ "aws", "heroku", "docker", "git" ]
+        },
+        {
+            "first_title": "AI &",
+            "second_title": "AUTOMATION",
+            "icons": [ "code", "bash" ]
         },
     ]
 };

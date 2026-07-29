@@ -1,0 +1,32 @@
+---
+title: 'Sistema de Matriculas'
+description: 'Sistema de gestion de matriculas universitarias desarrollado con Laravel utilizando el patron MVC para una organizacion eficiente del codigo y separacion clara de responsabilidades.'
+pubDate: 2024-01-20
+heroImage: 'resources/images/image_02.jpg'
+link: 'https://github.com/arimakey'
+tags: ['Laravel', 'PHP', 'MySQL', 'MVC', 'Bootstrap']
+---
+
+## Overview
+
+A university enrollment management system built with Laravel following the Model-View-Controller (MVC) architectural pattern. The system handles student registration, course enrollment, grade management, and academic record tracking.
+
+## Architecture
+
+The project was structured following clean MVC principles:
+
+- **Models**: Eloquent ORM models representing Students, Courses, Enrollments, and Grades
+- **Views**: Blade templates with Bootstrap for responsive UI
+- **Controllers**: RESTful controllers handling business logic and request validation
+
+## Key Features
+
+- Student registration with personal and academic data
+- Course catalog with search and filtering
+- Enrollment workflow with conflict detection (schedule overlaps, prerequisites)
+- Grade entry and academic history
+- PDF report generation for enrollment receipts and transcripts
+
+## Database Design
+
+The database schema was normalized to third normal form, with careful handling of the N:N relationship between students and courses through the enrollment pivot table.

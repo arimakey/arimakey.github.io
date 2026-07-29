@@ -1,13 +1,27 @@
 ---
-	const today = new Date();
+import { CONTACT_INFO } from '../../consts';
+const today = new Date();
 ---
 
 <footer class="footer" transition:name="footer">
 	<hr>
 	<div class="footer__main">
-		&copy; {today.getFullYear()} Created by Arimakey.
-		<div class="footer__main__redes">
-			Arimakey
+		<div class="footer__main__copy">
+			&copy; {today.getFullYear()} Martin Robles
+		</div>
+		<div class="footer__main__links">
+			<a href={`mailto:${CONTACT_INFO.email}`}>
+				<ion-icon name="mail-outline"></ion-icon>
+				{CONTACT_INFO.email}
+			</a>
+			<a href={CONTACT_INFO.github} target="_blank">
+				<ion-icon name="logo-github"></ion-icon>
+				GitHub
+			</a>
+			<a href={CONTACT_INFO.linkedin} target="_blank">
+				<ion-icon name="logo-linkedin"></ion-icon>
+				LinkedIn
+			</a>
 		</div>
 	</div>
 </footer>
@@ -17,20 +31,48 @@
 	}
 
 	.footer__main {
-		align-items: center;
-		padding: 0rem 0rem;
-		
-		font-size: 1rem;
 		display: flex;
-		flex-direction: row;
-		justify-content: space-between;
+		flex-direction: column;
+		gap: 0.5rem;
+		padding: 0rem 0rem;
+		font-size: 0.8rem;
+	}
+
+	.footer__main__links {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+	}
+
+	.footer__main__links a {
+		display: flex;
+		align-items: center;
+		gap: 0.25rem;
+		color: var(--secundary-text);
+		font-size: 0.7rem;
+		transition: color 0.2s;
+	}
+
+	.footer__main__links a:hover {
+		color: var(--primary-color);
 	}
 
 	@media only screen and (min-width: 768px) {
 		.footer__main {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: center;
 			padding: 0rem 2rem;
 			font-size: 1rem;
 		}
-	}
 
+		.footer__main__links {
+			flex-direction: row;
+			gap: 1.5rem;
+		}
+
+		.footer__main__links a {
+			font-size: 0.8rem;
+		}
+	}
 </style>

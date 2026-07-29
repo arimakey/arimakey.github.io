@@ -11,12 +11,4 @@ export default defineConfig({
   trailingSlash: 'never',
   output: 'static',
   integrations: [mdx(), sitemap(), icon()],
-  i18n: {
-    defaultLocale: "en",
-    locales: ["es", "en"],
-    routing: {
-      prefixDefaultLocale: false,
-      redirectToDefaultLocale: true
-    }
-  }
 });

@@ -1,8 +1,23 @@
 ---
 title: 'Peertok'
-id: '01'
 description: 'Peertok is a project that transforms your Parrot Linux environment into a personalized experience tailored to your specific needs. Tired of the tedious initial setup of Linux? Peertok saves you time and effort by automating the process, installing and configuring essential tools to optimize your experience in security and functionality.'
-pubDate: 'Jul 08 2022'
+pubDate: 2022-07-08
 heroImage: 'resources/images/peertok.png'
 link: 'https://github.com'
+tags: ['Bash', 'Linux', 'Automation']
 ---
+
+## Overview
+
+Peertok is an automation script for Parrot Linux that streamlines the initial setup process. Instead of manually installing and configuring tools after a fresh OS install, Peertok handles everything in one command.
+
+## What it does
+
+- **Window Manager Setup**: Installs and configures `bspwm` (a tiling window manager), `sxhkd` (hotkey daemon), and `rofi` (application launcher)
+- **Development Tools**: Sets up essential development packages and configurations
+- **Security Tools**: Pre-configures common security assessment tools included in Parrot Linux
+- **Dotfiles**: Applies personalized configuration files for terminal, editor, and shell
+
+## Why Bash
+
+Bash was chosen because it requires no dependencies -- it runs on any Parrot Linux installation out of the box. The script is modular, with each tool's configuration in its own function, making it easy to customize.

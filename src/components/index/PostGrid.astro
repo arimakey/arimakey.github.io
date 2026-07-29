@@ -2,14 +2,11 @@
 import Cards from "../Cards.astro";
 
 import { getCollection } from 'astro:content';
-import { getLangFromUrl } from '../../i18n/utils';
 
-const lang = getLangFromUrl(Astro.url);
-
-const posts = (await getCollection('blog', ({ id }) => { return id.startsWith(lang) })).slice(0, 3);
+const posts = (await getCollection('blog')).slice(0, 3);
 ---
 
-<section>
+<section id="blog">
     <h1>
         <hr>
         BLOG POST FOR ANYTHING
@@ -17,7 +14,7 @@ const posts = (await getCollection('blog', ({ id }) => { return id.startsWith(la
     </h1>
     <div>
         {
-            posts.map((post, index) => (<Cards title={post.data.title} content={post.data.description} img={post.data.img} on={index % 2 == 0 ? "true" : "false"} />))
+            posts.map((post, index) => (<Cards title={post.data.title} content={post.data.description} img={post.data.img} slug={`/blog/${post.id.split('/').pop()!.replace('.mdx', '')}`} on={index % 2 == 0 ? "true" : "false"} />))
         }
     </div>
 </section>

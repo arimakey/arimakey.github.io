@@ -1,0 +1,207 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Experience — Martin Robles" description="Professional experience and achievements">
+	<main class="experience">
+		<hr>
+		<header class="experience__header">
+			<h1>Experience & Achievements</h1>
+		</header>
+		<hr>
+
+		<section>
+			<h2 class="section__title">Work Experience</h2>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>Full Stack Dev</h3>
+					<span class="exp__item__date">Jan 2026 &mdash; Present</span>
+				</div>
+				<p class="exp__item__place">RapidBoard &mdash; Lima, Peru</p>
+				<ul class="exp__item__bullets">
+					<li>Desarrollo en Go de una libreria de orquestacion de agentes para la plataforma, integrando renderizado condicional en el frontend.</li>
+					<li>Diseno e implementacion de arquitectura backend multitenant con sistema RBAC para gestion segura de usuarios y permisos.</li>
+					<li>Liderazgo del equipo de desarrollo coordinando arquitectura tecnica, planificacion e implementacion de funcionalidades con metodologias agiles.</li>
+				</ul>
+			</article>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>Full Stack Dev L2</h3>
+					<span class="exp__item__date">Aug 2025 &mdash; Jan 2026</span>
+				</div>
+				<p class="exp__item__place">Hackmetrix &mdash; Remote</p>
+				<ul class="exp__item__bullets">
+					<li>Desarrollo con React y NestJS sobre arquitectura de microservicios, liderando migracion progresiva del frontend de Vue.js a React.</li>
+					<li>Migracion del sitio corporativo de HTML/CSS a Astro con arquitectura basada en componentes, mejorando rendimiento y mantenibilidad.</li>
+					<li>Participacion en iniciativas de Inteligencia Artificial y documentacion inicial de arquitectura basada en Apache Kafka.</li>
+				</ul>
+			</article>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>Technology Intern</h3>
+					<span class="exp__item__date">Feb 2025 &mdash; Jul 2025</span>
+				</div>
+				<p class="exp__item__place">Hackmetrix &mdash; Remote</p>
+				<ul class="exp__item__bullets">
+					<li>Desarrollo de funcionalidades con Vue.js y NestJS sobre arquitectura de microservicios.</li>
+					<li>Refactorizacion de modulos existentes e implementacion de pruebas para reducir deuda tecnica.</li>
+					<li>Colaboracion con equipo de Marketing en desarrollo del Test de Phishing para campanas de concientizacion.</li>
+				</ul>
+			</article>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>Freelance Developer</h3>
+					<span class="exp__item__date">Sep 2025</span>
+				</div>
+				<p class="exp__item__place">Cirvos</p>
+				<ul class="exp__item__bullets">
+					<li>Desarrollo de bots de WhatsApp con n8n, integrando Meta Business y WhatsApp Business API.</li>
+					<li>Despliegue de Chatwoot como plataforma de atencion al cliente con multiples canales.</li>
+				</ul>
+			</article>
+		</section>
+
+		<hr>
+
+		<section>
+			<h2 class="section__title">Recognition & Awards</h2>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>Speaker &mdash; AI: Impact on Organizations and Future Challenges</h3>
+					<span class="exp__item__date">Aug 2025</span>
+				</div>
+				<p class="exp__item__place">Colegio de Ingenieros del Peru &mdash; CD La Libertad</p>
+				<p>Exposicion sobre el uso practico de herramientas de IA para optimizar el ciclo de desarrollo de software, automatizar tareas repetitivas y acelerar la entrega de soluciones tecnologicas.</p>
+			</article>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>1st Place &mdash; AYNI Hackathon APEC Peru 2024</h3>
+					<span class="exp__item__date">Oct 2024</span>
+				</div>
+				<p class="exp__item__place">Asociacion de Peruanos en Silicon Valley</p>
+				<p>Primer lugar en el reto 'Turismo Inteligente' entre 40 equipos, con propuesta innovadora, impactante y viable en el sector turistico.</p>
+			</article>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>2nd Place &mdash; ONEM (National Math Olympics)</h3>
+					<span class="exp__item__date"></span>
+				</div>
+			</article>
+
+			<article class="exp__item">
+				<div class="exp__item__header">
+					<h3>1st Place &mdash; CONAMAT (Regional)</h3>
+					<span class="exp__item__date"></span>
+				</div>
+			</article>
+		</section>
+
+		<hr>
+		<footer class="experience__footer">
+			<a href="/" class="large__button large__button--transparent">
+				<ion-icon name="arrow-back-outline"></ion-icon>
+				Back to Home
+			</a>
+		</footer>
+	</main>
+</Layout>
+
+<style>
+	.experience {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+		margin: 2rem 0rem;
+	}
+
+	.experience__header h1 {
+		font-size: 2.5rem;
+		text-align: center;
+		margin-bottom: 0.5rem;
+	}
+
+	.section__title {
+		font-size: 1.2rem;
+		color: var(--contrast-text);
+		background-color: var(--primary-color);
+		text-align: center;
+		padding: 0.5rem 1rem;
+		margin-bottom: 1.5rem;
+	}
+
+	.exp__item {
+		padding: 0.5rem 1rem;
+		border-left: 3px solid var(--primary-color);
+		margin-bottom: 1.5rem;
+		margin-left: 0.5rem;
+	}
+
+	.exp__item__header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.exp__item__header h3 {
+		font-size: 1.1rem;
+		color: var(--primary-text);
+		letter-spacing: 0;
+	}
+
+	.exp__item__date {
+		font-family: "Rosario", sans-serif;
+		font-style: italic;
+		color: var(--secundary-text);
+		font-size: 0.8rem;
+	}
+
+	.exp__item__place {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.85rem;
+		color: var(--primary-color);
+		margin-bottom: 0.5rem;
+		font-weight: 600;
+	}
+
+	.exp__item__bullets {
+		margin-left: 1.2rem;
+		margin-top: 0.25rem;
+	}
+
+	.exp__item__bullets li {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.9rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.exp__item p {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.9rem;
+	}
+
+	.experience__footer {
+		display: flex;
+		justify-content: center;
+		padding-top: 0;
+	}
+
+	@media only screen and (min-width: 768px) {
+		.experience__header h1 {
+			font-size: 3.5rem;
+		}
+
+		.exp__item__header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: baseline;
+		}
+	}
+</style>
