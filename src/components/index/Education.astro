@@ -1,0 +1,164 @@
+---
+const items = [
+	{
+		color: "#1B6B4A",
+		title: "Systems Engineering",
+		org: "Universidad Nacional de Trujillo",
+		date: "2022 — 2026",
+	},
+	{
+		color: "#B8860B",
+		title: "Speaker: AI: Impact & Future",
+		org: "Colegio de Ingenieros del Perú · CD La Libertad",
+		date: "Aug 2025",
+		desc: "Uso práctico de IA para optimizar el ciclo de desarrollo de software y acelerar entregas.",
+	},
+	{
+		color: "#2D4A6E",
+		title: "1st Place — AYNI Hackathon APEC 2024",
+		org: "Asociación de Peruanos en Silicon Valley",
+		date: "Oct 2024",
+		desc: "Primer lugar en 'Turismo Inteligente' entre 40 equipos.",
+	},
+	{
+		color: "#7B2D8E",
+		title: "2nd Place ONEM · 1st Place CONAMAT",
+		org: "Olimpiadas nacionales y regionales de matemáticas",
+		date: "",
+	},
+]
+---
+
+<section class="edu" id="education">
+	<h2 class="edu-title">Education & Recognition</h2>
+	<div class="edu-grid">
+		{items.map((item, i) => (
+			<article class="edu-card" style="--accent:{item.color};--i:{i}" data-i={i}>
+				<div class="edu-top" style="background:{item.color}"></div>
+				<div class="edu-inner">
+					<span class="edu-stamp">{item.date || "—"}</span>
+					<h3 class="edu-name">{item.title}</h3>
+					<p class="edu-org">{item.org}</p>
+					{item.desc && <p class="edu-desc">{item.desc}</p>}
+				</div>
+			</article>
+		))}
+	</div>
+</section>
+
+<style>
+	.edu-title {
+		font-size: 2.8rem;
+		text-transform: uppercase;
+		letter-spacing: 0.3rem;
+		color: var(--primary-color);
+		border-bottom: 4px solid var(--primary-color);
+		padding-bottom: 0.3rem;
+		margin-bottom: 2.5rem;
+		width: fit-content;
+	}
+
+	.edu-grid {
+		display: grid;
+		grid-template-columns: 1fr;
+		gap: 1.5rem;
+	}
+
+	.edu-card {
+		background: var(--third-color);
+		border: 2px solid var(--primary-color);
+		box-shadow: 6px 6px 0 var(--primary-color);
+		overflow: hidden;
+		animation: eduFadeUp 0.5s ease both;
+		animation-delay: calc(var(--i) * 0.12s);
+	}
+
+	.edu-top {
+		height: 0.4rem;
+	}
+
+	.edu-inner {
+		padding: 1rem 1.2rem 1.2rem;
+		position: relative;
+	}
+
+	.edu-stamp {
+		position: absolute;
+		top: 0.2rem;
+		right: 0.8rem;
+		font-family: "Rosario", sans-serif;
+		font-size: 0.7rem;
+		font-weight: 700;
+		color: var(--accent);
+		text-transform: uppercase;
+		letter-spacing: 0.08rem;
+		border: 2px solid var(--accent);
+		padding: 0.1rem 0.4rem;
+		transform: rotate(2deg);
+		opacity: 0.85;
+	}
+
+	.edu-name {
+		font-size: 1.2rem;
+		color: var(--primary-text);
+		margin: 0 0 0.2rem;
+		letter-spacing: 0;
+	}
+
+	.edu-org {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.9rem;
+		font-weight: 600;
+		color: var(--secundary-text);
+		margin: 0;
+	}
+
+	.edu-desc {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.85rem;
+		color: var(--secundary-text);
+		margin: 0.5rem 0 0;
+		line-height: 1.4;
+	}
+
+	@keyframes eduFadeUp {
+		from {
+			opacity: 0;
+			transform: translateY(1.5rem);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.edu-card {
+			animation: none;
+		}
+	}
+
+	@media only screen and (min-width: 600px) {
+		.edu-grid {
+			grid-template-columns: 1fr 1fr;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		.edu-title {
+			font-size: 4rem;
+		}
+
+		.edu-inner {
+			padding: 1.2rem 1.5rem 1.5rem;
+		}
+
+		.edu-name {
+			font-size: 1.4rem;
+		}
+
+		.edu-stamp {
+			font-size: 0.75rem;
+		}
+	}
+</style>
