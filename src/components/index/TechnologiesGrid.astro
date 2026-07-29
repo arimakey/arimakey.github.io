@@ -1,10 +1,29 @@
 ---
 import TextureFilter from '../TextureFilter.astro'
 import Technologies from './Technologies.astro'
-
 import list_technologies from '../../data/technologies'
+import descriptions from '../../data/tech-descriptions.js'
 
-
+const techNames = {
+    html: 'HTML',
+    css: 'CSS',
+    javascript: 'JavaScript',
+    typescript: 'TypeScript',
+    tailwind: 'Tailwind CSS',
+    react: 'React',
+    nextjs: 'Next.js',
+    java: 'Java',
+    bash: 'Bash',
+    docker: 'Docker',
+    git: 'Git',
+    github: 'GitHub',
+    postgresql: 'PostgreSQL',
+    mongodb: 'MongoDB',
+    aws: 'AWS',
+    heroku: 'Heroku',
+    code: 'C++',
+    cpp: 'C++',
+}
 ---
 
 <section class="technologies" id="technologies">
@@ -18,8 +37,53 @@ import list_technologies from '../../data/technologies'
     <div class="technologies__image__container">
         <TextureFilter src='resources/images/technologies-new.png' transition="none"/>
     </div>
+    <dialog id="tech-dialog">
+        <div class="tech-dlg-inner">
+            <button class="tech-dlg-close">&times;</button>
+            <div class="tech-dlg-icon" id="tech-dlg-icon"></div>
+            <h3 class="tech-dlg-name" id="tech-dlg-name"></h3>
+            <p class="tech-dlg-desc" id="tech-dlg-desc"></p>
+        </div>
+    </dialog>
 </section>
 
+<script define:vars={{ descriptions, techNames }}>
+    const NAMES = techNames;
+
+    const dialog = document.getElementById('tech-dialog');
+    const dlgIcon = document.getElementById('tech-dlg-icon');
+    const dlgName = document.getElementById('tech-dlg-name');
+    const dlgDesc = document.getElementById('tech-dlg-desc');
+    const closeBtn = dialog.querySelector('.tech-dlg-close');
+
+    document.querySelector('.technologies__container').addEventListener('click', (e) => {
+        const btn = e.target.closest('.tech-btn');
+        if (!btn) return;
+        const tech = btn.dataset.tech;
+        if (!tech) return;
+        const name = NAMES[tech] || tech;
+        const desc = descriptions[tech] || '';
+
+        const svg = btn.querySelector('svg');
+        dlgIcon.innerHTML = '';
+        if (svg) {
+            const clone = svg.cloneNode(true);
+            clone.removeAttribute('width');
+            clone.removeAttribute('height');
+            dlgIcon.appendChild(clone);
+        }
+
+        dlgName.textContent = name;
+        dlgDesc.textContent = desc;
+        dialog.showModal();
+    });
+
+    closeBtn.addEventListener('click', () => dialog.close());
+
+    dialog.addEventListener('click', (e) => {
+        if (e.target === dialog) dialog.close();
+    });
+</script>
 
 <style>
     .technologies__title {
@@ -29,9 +93,7 @@ import list_technologies from '../../data/technologies'
         font-size: 1rem;
         text-align: center;
         padding: 0.5rem 1rem;
-        
     }
-    
 
     .technologies__container {
         width: 100%;
@@ -44,6 +106,82 @@ import list_technologies from '../../data/technologies'
     hr {
         margin: 0rem;
         height: 1px;
+    }
+
+    #tech-dialog {
+        border: 3px solid var(--primary-color);
+        background: var(--secundary-color);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='64' viewBox='0 0 32 64'%3E%3Cg fill='%23ebddca' fill-opacity='0.4'%3E%3Cpath fill-rule='evenodd' d='M0 48h8v4H0v-4zm0 8h12v4H0v-4zm0-16h4v4H0v-4zM0 0h8v4H0V0zm0 8h4v4H0V8zm32 40h-12v4h12v-4zm0 8h-16v4h16v-4zm0-16h-8v4h8v-4zm0-32h-12v4h12V0zm0 8h-12v4h12V8zm-4 24h4v4h-4v-4zm0-16h4v4h-4v-4zM4 8h24v4H4V8zm0 16h24v4H4v-4zm-4-8h32v4H0v-4zm8-16h16v4H8V0zm0 32h16v4H8v-4zM12 0h4v4h-4V0zm0 32h4v4h-4v-4z'/%3E%3C/g%3E%3C/svg%3E");
+        color: var(--primary-text);
+        padding: 0;
+        margin: auto;
+        max-width: 24rem;
+        width: 90%;
+        box-shadow: 8px 8px 0 var(--primary-color);
+    }
+
+    #tech-dialog[open] {
+        animation: dlgIn 0.25s ease;
+    }
+
+    @keyframes dlgIn {
+        from { opacity: 0; }
+    }
+
+    #tech-dialog::backdrop {
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(2px);
+    }
+
+    .tech-dlg-inner {
+        position: relative;
+        padding: 1.8rem 1.5rem 1.5rem;
+    }
+
+    .tech-dlg-close {
+        position: absolute;
+        top: 0.2rem;
+        right: 0.5rem;
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: 1.8rem;
+        cursor: pointer;
+        line-height: 1;
+    }
+
+    .tech-dlg-close:hover {
+        opacity: 0.7;
+    }
+
+    .tech-dlg-icon {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 0.8rem;
+        color: var(--primary-color);
+    }
+
+    .tech-dlg-icon svg {
+        width: 2.8rem;
+        height: 2.8rem;
+    }
+
+    .tech-dlg-name {
+        font-size: 1.4rem;
+        margin: 0 0 0.5rem;
+        font-family: "M PLUS Rounded 1c", sans-serif;
+        font-weight: 900;
+        color: var(--primary-color);
+        text-align: center;
+    }
+
+    .tech-dlg-desc {
+        font-size: 0.95rem;
+        font-family: "Rosario", sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        color: var(--primary-text);
+        text-align: center;
     }
 
     @media only screen and (min-width: 540px) {
@@ -59,7 +197,7 @@ import list_technologies from '../../data/technologies'
             flex-direction: row;
             gap: 1rem
         }
-        
+
         .technologies__title {
             padding: 0.8rem;
             width: 60%;
@@ -79,5 +217,4 @@ import list_technologies from '../../data/technologies'
             width: 80%;
         }
     }
-
 </style>

@@ -1,24 +1,23 @@
 ---
-import Layout from '../layouts/Layout.astro'
-import '../styles/global.css'
+import Layout from "../layouts/Layout.astro";
+import "../styles/global.css";
 
-import ProjectsGrid from '../components/index/ProjectsGrid.astro'
-import TechnologiesGrid from '../components/index/TechnologiesGrid.astro'
-import IndexHeader from '../components/index/IndexHeader.astro'
-import Experience from '../components/index/Experience.astro'
-import Education from '../components/index/Education.astro'
-
+import ProjectsGrid from "../components/index/ProjectsGrid.astro";
+import TechnologiesGrid from "../components/index/TechnologiesGrid.astro";
+import IndexHeader from "../components/index/IndexHeader.astro";
+import Experience from "../components/index/Experience.astro";
+import Education from "../components/index/Education.astro";
 ---
+
 <Layout title="Martin Robles" description="Full Stack Developer — Portfolio">
     <main>
         <IndexHeader />
         <TechnologiesGrid />
-        <ProjectsGrid />
         <Experience />
+        <ProjectsGrid />
         <Education />
     </main>
 </Layout>
-
 
 <style>
     main {
