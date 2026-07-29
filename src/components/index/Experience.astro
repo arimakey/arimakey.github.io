@@ -1,0 +1,192 @@
+---
+---
+
+<section class="experience" id="experience">
+	<h2 class="experience__title">Experience</h2>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>Full Stack Dev</h3>
+			<span class="exp__item__date">Jan 2026 &mdash; Present</span>
+		</div>
+		<p class="exp__item__place">RapidBoard &mdash; Lima, Peru</p>
+		<ul class="exp__item__bullets">
+			<li>Desarrollo en Go de una libreria de orquestacion de agentes, integrando renderizado condicional en el frontend.</li>
+			<li>Diseno de arquitectura backend multitenant con sistema RBAC para gestion de usuarios y permisos.</li>
+			<li>Liderazgo del equipo de desarrollo con metodologias agiles, code reviews y entregas continuas.</li>
+		</ul>
+	</article>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>Full Stack Dev L2</h3>
+			<span class="exp__item__date">Aug 2025 &mdash; Jan 2026</span>
+		</div>
+		<p class="exp__item__place">Hackmetrix &mdash; Remote</p>
+		<ul class="exp__item__bullets">
+			<li>React y NestJS sobre microservicios. Migracion progresiva del frontend de Vue.js a React.</li>
+			<li>Migracion del sitio corporativo a Astro, mejorando rendimiento, SEO y mantenibilidad.</li>
+			<li>Iniciativas de IA y documentacion inicial de arquitectura basada en Apache Kafka.</li>
+		</ul>
+	</article>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>Technology Intern</h3>
+			<span class="exp__item__date">Feb 2025 &mdash; Jul 2025</span>
+		</div>
+		<p class="exp__item__place">Hackmetrix &mdash; Remote</p>
+		<ul class="exp__item__bullets">
+			<li>Vue.js y NestJS sobre microservicios. Refactorizacion y pruebas para reducir deuda tecnica.</li>
+			<li>Desarrollo del Test de Phishing con el equipo de Marketing para campanas de concientizacion.</li>
+		</ul>
+	</article>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>Freelance Developer</h3>
+			<span class="exp__item__date">Sep 2025</span>
+		</div>
+		<p class="exp__item__place">Cirvos</p>
+		<ul class="exp__item__bullets">
+			<li>Bots de WhatsApp con n8n, integrando Meta Business y WhatsApp Business API.</li>
+			<li>Despliegue de Chatwoot como plataforma de atencion al cliente multicanal.</li>
+		</ul>
+	</article>
+
+	<hr class="exp__divider">
+
+	<h2 class="experience__title">Education & Recognition</h2>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>Systems Engineering</h3>
+			<span class="exp__item__date">2022 &mdash; 2026</span>
+		</div>
+		<p class="exp__item__place">Universidad Nacional de Trujillo</p>
+	</article>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>Speaker &mdash; AI: Impact & Future</h3>
+			<span class="exp__item__date">Aug 2025</span>
+		</div>
+		<p class="exp__item__place">Colegio de Ingenieros del Peru &mdash; CD La Libertad</p>
+		<p>Uso practico de IA para optimizar el ciclo de desarrollo de software y acelerar entregas.</p>
+	</article>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>1st Place &mdash; AYNI Hackathon APEC 2024</h3>
+			<span class="exp__item__date">Oct 2024</span>
+		</div>
+		<p class="exp__item__place">Asociacion de Peruanos en Silicon Valley</p>
+		<p>Primer lugar en 'Turismo Inteligente' entre 40 equipos con solucion innovadora para el sector turistico.</p>
+	</article>
+
+	<article class="exp__item">
+		<div class="exp__item__header">
+			<h3>2nd Place &mdash; ONEM &amp; 1st Place &mdash; CONAMAT</h3>
+			<span class="exp__item__date"></span>
+		</div>
+		<p>Olimpiadas nacionales y regionales de matematicas.</p>
+	</article>
+</section>
+
+<style>
+	.experience {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.experience__title {
+		color: var(--contrast-text);
+		background-color: var(--primary-color);
+		text-align: center;
+		font-size: 1rem;
+		padding: 0.5rem 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.exp__item {
+		padding: 0.5rem 1rem;
+		border-left: 3px solid var(--primary-color);
+		margin-bottom: 1.25rem;
+		margin-left: 0.5rem;
+	}
+
+	.exp__item:last-of-type {
+		margin-bottom: 0;
+	}
+
+	.exp__item__header {
+		display: flex;
+		flex-direction: column;
+		gap: 0.25rem;
+		margin-bottom: 0.25rem;
+	}
+
+	.exp__item__header h3 {
+		font-size: 1rem;
+		color: var(--primary-text);
+		letter-spacing: 0;
+	}
+
+	.exp__item__date {
+		font-family: "Rosario", sans-serif;
+		font-style: italic;
+		color: var(--secundary-text);
+		font-size: 0.75rem;
+	}
+
+	.exp__item__place {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.8rem;
+		color: var(--primary-color);
+		margin-bottom: 0.4rem;
+		font-weight: 600;
+	}
+
+	.exp__item__bullets {
+		margin-left: 1.2rem;
+		margin-top: 0.25rem;
+	}
+
+	.exp__item__bullets li {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.8rem;
+		margin-bottom: 0.15rem;
+	}
+
+	.exp__item p {
+		font-family: "Rosario", sans-serif;
+		font-size: 0.8rem;
+	}
+
+	.exp__divider {
+		margin: 2rem 0rem;
+	}
+
+	@media only screen and (min-width: 480px) {
+		.experience__title {
+			font-size: 1.5rem;
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		.experience__title {
+			font-size: 1.5rem;
+			padding: 1rem;
+		}
+
+		.exp__item__header {
+			flex-direction: row;
+			justify-content: space-between;
+			align-items: baseline;
+		}
+
+		.exp__item__header h3 {
+			font-size: 1.1rem;
+		}
+	}
+</style>
