@@ -1,23 +1,25 @@
 ---
+const BASE = import.meta.env.BASE_URL.replace(/\/?$/, '/')
+
 const companies = [
-	{ name: "RapidBoard", role: "Full Stack Dev", color: "#D13842", location: "Lima, Peru", date: "Jan 2026 — Present",
+	{ logo: BASE + "companies/rapidboard-logo.png", role: "Full Stack Dev", name: "RapidBoard · Lima, Peru", date: "Jan 2026 — Present",
 		bullets: [
 			"Desarrollo en Go de una librería de orquestación de agentes, integrando renderizado condicional en el frontend.",
 			"Diseño de arquitectura backend multitenant con sistema RBAC para gestión de usuarios y permisos.",
 			"Liderazgo del equipo de desarrollo con metodologías ágiles, code reviews y entregas continuas.",
 		] },
-	{ name: "Hackmetrix", role: "Full Stack Dev L2", color: "#CC4B2C", location: "Remote", date: "Aug 2025 — Jan 2026",
+	{ logo: BASE + "companies/Hackmetrix.jpg", role: "Full Stack Dev L2", name: "Hackmetrix · Remote", date: "Aug 2025 — Jan 2026",
 		bullets: [
 			"React y NestJS sobre microservicios. Migración progresiva del frontend de Vue.js a React.",
 			"Migración del sitio corporativo a Astro, mejorando rendimiento, SEO y mantenibilidad.",
 			"Iniciativas de IA y documentación inicial de arquitectura basada en Apache Kafka.",
 		] },
-	{ name: "Hackmetrix", role: "Technology Intern", color: "#CC4B2C", location: "Remote", date: "Feb 2025 — Jul 2025",
+	{ logo: BASE + "companies/Hackmetrix.jpg", role: "Technology Intern", name: "Hackmetrix · Remote", date: "Feb 2025 — Jul 2025",
 		bullets: [
 			"Vue.js y NestJS sobre microservicios. Refactorización y pruebas para reducir deuda técnica.",
 			"Desarrollo del Test de Phishing con el equipo de Marketing para campañas de concientización.",
 		] },
-	{ name: "Cirvos", role: "Freelance Developer", color: "#5E3C72", location: "", date: "Sep 2025",
+	{ logo: BASE + "companies/Cirvos.png", role: "Freelance Developer", name: "Cirvos", date: "Sep 2025",
 		bullets: [
 			"Bots de WhatsApp con n8n, integrando Meta Business y WhatsApp Business API.",
 			"Despliegue de Chatwoot como plataforma de atención al cliente multicanal.",
@@ -28,21 +30,23 @@ const companies = [
 <section class="experience" id="experience">
 	<h2 class="section-title">Experience</h2>
 
-	<div class="ex-grid">
+	<div class="timeline">
 		{companies.map((c, i) => (
-			<article class="ex-card" style="--accent:{c.color};--i:{i}" data-i={i}>
-				<div class="ex-bar" style="background:{c.color}"></div>
-				<div class="ex-body">
-					<div class="ex-head">
+			<div class="tl-item" style="--i: {i}">
+				<div class="tl-badge">
+					<img src={c.logo} alt="" />
+				</div>
+				<div class="tl-body">
+					<div class="tl-head">
 						<h3>{c.role}</h3>
-						<span class="ex-date">{c.date}</span>
+						<span class="tl-date">{c.date}</span>
 					</div>
-					<p class="ex-company">{c.name}{c.location ? ` · ${c.location}` : ''}</p>
-					<ul class="ex-bullets">
+					<p class="tl-company">{c.name}</p>
+					<ul class="tl-bullets">
 						{c.bullets.map(b => <li>{b}</li>)}
 					</ul>
 				</div>
-			</article>
+			</div>
 		))}
 	</div>
 </section>
@@ -59,77 +63,135 @@ const companies = [
 		width: fit-content;
 	}
 
-	.ex-grid {
-		display: flex;
-		flex-direction: column;
-		gap: 1.5rem;
+	.timeline {
+		position: relative;
+		padding-left: 4rem;
 	}
 
-	.ex-card {
-		display: flex;
-		background: var(--third-color);
-		border: 2px solid var(--primary-color);
-		box-shadow: 6px 6px 0 var(--primary-color);
-		overflow: hidden;
-		animation: exSlideUp 0.5s ease both;
+	.timeline::before {
+		content: '';
+		position: absolute;
+		left: 2rem;
+		top: 0;
+		bottom: 0;
+		width: 3px;
+		background: var(--primary-color);
+		opacity: 0.3;
+	}
+
+	.tl-item {
+		position: relative;
+		margin-bottom: 2.5rem;
+		perspective: 800px;
+		animation: tlSlideUp 0.5s ease both;
 		animation-delay: calc(var(--i) * 0.12s);
 	}
 
-	.ex-bar {
-		width: 0.5rem;
-		flex-shrink: 0;
+	.tl-badge {
+		position: absolute;
+		left: -4rem;
+		top: 0;
+		width: 3.2rem;
+		height: 3.2rem;
+		z-index: 1;
+		box-shadow: 4px 4px 0 var(--primary-color);
+		overflow: hidden;
+		transition: transform 0.3s ease;
 	}
 
-	.ex-body {
-		padding: 1rem 1.2rem;
-		flex: 1;
+	.tl-item:hover .tl-badge {
+		transform: rotateY(20deg) rotateX(-8deg) scale(1.1);
 	}
 
-	.ex-head {
+	.tl-badge::before {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: var(--grain-url);
+		background-repeat: repeat;
+		background-position: center;
+		background-size: auto;
+		pointer-events: none;
+		content: '';
+		mix-blend-mode: soft-light;
+		opacity: 40%;
+		z-index: 2;
+	}
+
+	.tl-badge::after {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		pointer-events: none;
+		content: '';
+		background-color: var(--secundary-text);
+		mix-blend-mode: color;
+		z-index: 1;
+	}
+
+	.tl-badge img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		display: block;
+	}
+
+	.tl-body {
+		background: var(--third-color);
+		padding: 1rem 1.5rem;
+		border: 2px solid var(--primary-color);
+		box-shadow: 6px 6px 0 var(--primary-color);
+	}
+
+	.tl-head {
 		display: flex;
 		flex-direction: column;
-		gap: 0.1rem;
-		margin-bottom: 0.15rem;
+		gap: 0.15rem;
+		margin-bottom: 0.2rem;
 	}
 
-	.ex-head h3 {
-		font-size: 1.3rem;
+	.tl-head h3 {
+		font-size: 1.4rem;
 		color: var(--primary-text);
 		letter-spacing: 0;
 		margin: 0;
 	}
 
-	.ex-date {
+	.tl-date {
 		font-family: "Rosario", sans-serif;
-		font-size: 0.8rem;
+		font-size: 0.85rem;
 		font-weight: 700;
-		color: var(--accent);
+		color: var(--primary-color);
 		text-transform: uppercase;
 		letter-spacing: 0.1rem;
 	}
 
-	.ex-company {
+	.tl-company {
 		font-family: "Rosario", sans-serif;
 		font-size: 1rem;
 		font-weight: 600;
 		color: var(--secundary-text);
-		margin-bottom: 0.4rem;
+		margin-bottom: 0.5rem;
 	}
 
-	.ex-bullets {
+	.tl-bullets {
 		margin: 0;
-		padding-left: 1.1rem;
+		padding-left: 1.2rem;
 	}
 
-	.ex-bullets li {
+	.tl-bullets li {
 		font-family: "Rosario", sans-serif;
-		font-size: 0.85rem;
-		margin-bottom: 0.15rem;
+		font-size: 0.9rem;
+		margin-bottom: 0.2rem;
 		line-height: 1.4;
 		color: var(--secundary-text);
 	}
 
-	@keyframes exSlideUp {
+	@keyframes tlSlideUp {
 		from {
 			opacity: 0;
 			transform: translateY(2rem);
@@ -141,7 +203,7 @@ const companies = [
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.ex-card {
+		.tl-item {
 			animation: none;
 		}
 	}
@@ -151,12 +213,21 @@ const companies = [
 			font-size: 3.5rem;
 		}
 
-		.ex-head h3 {
-			font-size: 1.5rem;
+		.tl-head h3 {
+			font-size: 1.6rem;
 		}
 
-		.ex-body {
-			padding: 1.2rem 1.5rem;
+		.tl-badge {
+			width: 3.6rem;
+			height: 3.6rem;
+		}
+
+		.timeline {
+			padding-left: 4.5rem;
+		}
+
+		.tl-badge {
+			left: -4.5rem;
 		}
 	}
 
@@ -165,22 +236,31 @@ const companies = [
 			font-size: 4rem;
 		}
 
-		.ex-head {
+		.tl-head {
 			flex-direction: row;
 			justify-content: space-between;
 			align-items: baseline;
 		}
 
-		.ex-head h3 {
-			font-size: 1.7rem;
+		.tl-head h3 {
+			font-size: 1.8rem;
 		}
 
-		.ex-bar {
-			width: 0.6rem;
+		.tl-body {
+			padding: 1.2rem 2rem;
 		}
 
-		.ex-body {
-			padding: 1.4rem 2rem;
+		.tl-badge {
+			width: 4rem;
+			height: 4rem;
+		}
+
+		.timeline {
+			padding-left: 5rem;
+		}
+
+		.tl-badge {
+			left: -5rem;
 		}
 	}
 </style>
