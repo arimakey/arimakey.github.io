@@ -1,27 +1,27 @@
 ---
 const items = [
 	{
-		color: "#1B6B4A",
+		color: "#2C1E0B",
 		title: "Systems Engineering",
 		org: "Universidad Nacional de Trujillo",
 		date: "2022 — 2026",
 	},
 	{
-		color: "#B8860B",
+		color: "#4D391D",
 		title: "Speaker: AI: Impact & Future",
 		org: "Colegio de Ingenieros del Perú · CD La Libertad",
 		date: "Aug 2025",
 		desc: "Uso práctico de IA para optimizar el ciclo de desarrollo de software y acelerar entregas.",
 	},
 	{
-		color: "#2D4A6E",
+		color: "#3A2812",
 		title: "1st Place — AYNI Hackathon APEC 2024",
 		org: "Asociación de Peruanos en Silicon Valley",
 		date: "Oct 2024",
 		desc: "Primer lugar en 'Turismo Inteligente' entre 40 equipos.",
 	},
 	{
-		color: "#7B2D8E",
+		color: "#5C4324",
 		title: "2nd Place ONEM · 1st Place CONAMAT",
 		org: "Olimpiadas nacionales y regionales de matemáticas",
 		date: "",
@@ -48,11 +48,13 @@ const items = [
 
 <style>
 	.edu-title {
+		width: 100%;
 		margin-bottom: 1.5rem;
 		color: var(--contrast-text);
 		background-color: var(--primary-color);
 		font-size: 1rem;
 		text-align: center;
+		letter-spacing: 0.4rem;
 		padding: 0.5rem 1rem;
 	}
 
@@ -105,7 +107,6 @@ const items = [
 		letter-spacing: 0.08rem;
 		border: 2px solid var(--accent);
 		padding: 0.1rem 0.4rem;
-		transform: rotate(2deg);
 		opacity: 0.85;
 	}
 
@@ -158,7 +159,6 @@ const items = [
 	@media only screen and (min-width: 768px) {
 		.edu-title {
 			padding: 0.8rem;
-			width: 60%;
 			font-size: 1.5rem;
 		}
 

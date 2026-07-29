@@ -1,65 +1,109 @@
 ---
-const BASE = import.meta.env.BASE_URL.replace(/\/?$/, '/')
+const BASE = import.meta.env.BASE_URL.replace(/\/?$/, "/");
 
 const companies = [
-	{ logo: BASE + "companies/rapidboard-logo.png", role: "Full Stack Dev", name: "RapidBoard · Lima, Peru", date: "Jan 2026 — Present",
+	{
+		logo: BASE + "companies/rapidboard-logo.png",
+		role: "Full Stack Dev",
+		name: "RapidBoard · Lima, Peru",
+		date: "Jan 2026 — Present",
 		url: "https://rapidboard.app/",
 		bullets: [
 			"Desarrollo en Go de una librería de orquestación de agentes, integrando renderizado condicional en el frontend.",
 			"Diseño de arquitectura backend multitenant con sistema RBAC para gestión de usuarios y permisos.",
 			"Liderazgo del equipo de desarrollo con metodologías ágiles, code reviews y entregas continuas.",
-		] },
-	{ logo: BASE + "companies/Hackmetrix.jpg", role: "Full Stack Dev L2", name: "Hackmetrix · Remote", date: "Aug 2025 — Jan 2026",
+		],
+	},
+	{
+		logo: BASE + "companies/Hackmetrix.jpg",
+		role: "Full Stack Dev L2",
+		name: "Hackmetrix · Remote",
+		date: "Aug 2025 — Jan 2026",
 		url: "https://hackmetrix.com/",
 		bullets: [
 			"React y NestJS sobre microservicios. Migración progresiva del frontend de Vue.js a React.",
 			"Migración del sitio corporativo a Astro, mejorando rendimiento, SEO y mantenibilidad.",
 			"Iniciativas de IA y documentación inicial de arquitectura basada en Apache Kafka.",
-		] },
-	{ logo: BASE + "companies/Hackmetrix.jpg", role: "Technology Intern", name: "Hackmetrix · Remote", date: "Feb 2025 — Jul 2025",
+		],
+	},
+	{
+		logo: BASE + "companies/Hackmetrix.jpg",
+		role: "Technology Intern",
+		name: "Hackmetrix · Remote",
+		date: "Feb 2025 — Jul 2025",
 		url: "https://hackmetrix.com/",
 		bullets: [
 			"Vue.js y NestJS sobre microservicios. Refactorización y pruebas para reducir deuda técnica.",
 			"Desarrollo del Test de Phishing con el equipo de Marketing para campañas de concientización.",
-		] },
-	{ logo: BASE + "companies/Cirvos.png", role: "Freelance Developer", name: "Cirvos", date: "Sep 2025",
+		],
+	},
+	{
+		logo: BASE + "companies/Cirvos.png",
+		role: "Freelance Developer",
+		name: "Cirvos",
+		date: "Sep 2025",
 		bullets: [
 			"Bots de WhatsApp con n8n, integrando Meta Business y WhatsApp Business API.",
 			"Despliegue de Chatwoot como plataforma de atención al cliente multicanal.",
-		] },
-]
+		],
+	},
+];
 ---
 
 <section class="experience" id="experience">
 	<h2 class="section-title">Experience</h2>
 
 	<div class="timeline">
-		{companies.map((c, i) => (
-			<div class="tl-item" data-i={i} style={{ '--i': i }}>
-				<div class="tl-badge">
-					<img src={c.logo} alt="" />
-					{c.url ? (
-						<a class="tl-badge-overlay" href={c.url} target="_blank" rel="noopener" title="Visit website">
-							<svg viewBox="0 0 24 24"><path fill="currentColor" d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3zm5 13v5H5V7h5V5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5z"/></svg>
-						</a>
-					) : (
-						<button class="tl-badge-overlay tl-badge-no-url" data-noweb title="No website available">
-							<svg viewBox="0 0 24 24"><path fill="currentColor" d="M10.59 13.41c.41.39.41 1.03 0 1.42c-.39.39-1.03.39-1.42 0a5 5 0 0 1 0-7.07l3.54-3.54a5 5 0 0 1 7.07 0a5 5 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a3 3 0 0 0 0-4.24a3 3 0 0 0-4.24 0l-3.53 3.53a3 3 0 0 0 0 4.24M2.29 7.15a6 6 0 0 0 0 8.49l.47.48c-.28-.78-.41-1.6-.4-2.42L.87 15.19a5 5 0 0 1 0-7.07l3.54-3.54a5 5 0 0 1 7.07 0a5 5 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.43l.47-.47a3 3 0 0 0 0-4.24a3 3 0 0 0-4.24 0z"/></svg>
-						</button>
-					)}
-				</div>
-				<div class="tl-body">
-					<div class="tl-head">
-						<h3>{c.role}</h3>
-						<span class="tl-date">{c.date}</span>
+		{
+			companies.map((c, i) => (
+				<div class="tl-item" data-i={i} style={{ "--i": i }}>
+					<div class="tl-badge">
+						<img src={c.logo} alt="" />
+						{c.url ? (
+							<a
+								class="tl-badge-overlay"
+								href={c.url}
+								target="_blank"
+								rel="noopener"
+								title="Visit website"
+							>
+								<svg viewBox="0 0 24 24">
+									<path
+										fill="currentColor"
+										d="M14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3zm5 13v5H5V7h5V5H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5z"
+									/>
+								</svg>
+							</a>
+						) : (
+							<button
+								class="tl-badge-overlay tl-badge-no-url"
+								data-noweb
+								title="No website available"
+							>
+								<svg viewBox="0 0 24 24">
+									<path
+										fill="currentColor"
+										d="M10.59 13.41c.41.39.41 1.03 0 1.42c-.39.39-1.03.39-1.42 0a5 5 0 0 1 0-7.07l3.54-3.54a5 5 0 0 1 7.07 0a5 5 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.42l.47-.48a3 3 0 0 0 0-4.24a3 3 0 0 0-4.24 0l-3.53 3.53a3 3 0 0 0 0 4.24M2.29 7.15a6 6 0 0 0 0 8.49l.47.48c-.28-.78-.41-1.6-.4-2.42L.87 15.19a5 5 0 0 1 0-7.07l3.54-3.54a5 5 0 0 1 7.07 0a5 5 0 0 1 0 7.07l-1.49 1.49c.01-.82-.12-1.64-.4-2.43l.47-.47a3 3 0 0 0 0-4.24a3 3 0 0 0-4.24 0z"
+									/>
+								</svg>
+							</button>
+						)}
 					</div>
-					<p class="tl-company">{c.name}</p>
-					<ul class="tl-bullets">
-						{c.bullets.map(b => <li>{b}</li>)}
-					</ul>
+					<div class="tl-body">
+						<div class="tl-head">
+							<h3>{c.role}</h3>
+							<span class="tl-date">{c.date}</span>
+						</div>
+						<p class="tl-company">{c.name}</p>
+						<ul class="tl-bullets">
+							{c.bullets.map((b) => (
+								<li>{b}</li>
+							))}
+						</ul>
+					</div>
 				</div>
-			</div>
-		))}
+			))
+		}
 	</div>
 	<dialog id="exp-dialog" class="exp-dialog">
 		<div class="exp-dlg-inner">
@@ -70,19 +114,19 @@ const companies = [
 </section>
 
 <script>
-	(function() {
-		const dialog = document.getElementById('exp-dialog');
-		const closeBtn = dialog.querySelector('.exp-dlg-close');
+	(function () {
+		const dialog = document.getElementById("exp-dialog");
+		const closeBtn = dialog.querySelector(".exp-dlg-close");
 
-		document.addEventListener('click', (e) => {
-			const btn = e.target.closest('.tl-badge-no-url');
+		document.addEventListener("click", (e) => {
+			const btn = e.target.closest(".tl-badge-no-url");
 			if (!btn) return;
 			e.preventDefault();
 			dialog.showModal();
 		});
 
-		closeBtn.addEventListener('click', () => dialog.close());
-		dialog.addEventListener('click', (e) => {
+		closeBtn.addEventListener("click", () => dialog.close());
+		dialog.addEventListener("click", (e) => {
 			if (e.target === dialog) dialog.close();
 		});
 	})();
@@ -95,6 +139,7 @@ const companies = [
 		background-color: var(--primary-color);
 		font-size: 1rem;
 		text-align: center;
+		letter-spacing: 0.5rem;
 		padding: 0.5rem 1rem;
 	}
 
@@ -119,7 +164,7 @@ const companies = [
 	}
 
 	.timeline::before {
-		content: '';
+		content: "";
 		position: absolute;
 		left: 2rem;
 		top: 0;
@@ -145,7 +190,9 @@ const companies = [
 		z-index: 1;
 		box-shadow: 4px 4px 0 var(--primary-color);
 		overflow: hidden;
-		transition: transform 0.25s ease, box-shadow 0.25s ease;
+		transition:
+			transform 0.25s ease,
+			box-shadow 0.25s ease;
 	}
 
 	.tl-badge:hover {
@@ -164,7 +211,7 @@ const companies = [
 		background-position: center;
 		background-size: auto;
 		pointer-events: none;
-		content: '';
+		content: "";
 		mix-blend-mode: soft-light;
 		opacity: 40%;
 		z-index: 2;
@@ -177,7 +224,7 @@ const companies = [
 		width: 100%;
 		height: 100%;
 		pointer-events: none;
-		content: '';
+		content: "";
 		background-color: var(--secundary-text);
 		mix-blend-mode: color;
 		z-index: 1;
@@ -346,7 +393,9 @@ const companies = [
 	}
 
 	@keyframes expDlgIn {
-		from { opacity: 0; }
+		from {
+			opacity: 0;
+		}
 	}
 
 	.exp-dialog::backdrop {
