@@ -48,14 +48,19 @@ const items = [
 
 <style>
 	.edu-title {
-		font-size: 2.8rem;
-		text-transform: uppercase;
-		letter-spacing: 0.3rem;
-		color: var(--primary-color);
-		border-bottom: 4px solid var(--primary-color);
-		padding-bottom: 0.3rem;
-		margin-bottom: 2.5rem;
-		width: fit-content;
+		margin-bottom: 1.5rem;
+		color: var(--contrast-text);
+		background-color: var(--primary-color);
+		font-size: 1rem;
+		text-align: center;
+		padding: 0.5rem 1rem;
+	}
+
+	@media only screen and (min-width: 540px) {
+		.edu-title {
+			font-size: 1.5rem;
+			width: 100%;
+		}
 	}
 
 	.edu-grid {
@@ -152,7 +157,9 @@ const items = [
 
 	@media only screen and (min-width: 768px) {
 		.edu-title {
-			font-size: 4rem;
+			padding: 0.8rem;
+			width: 60%;
+			font-size: 1.5rem;
 		}
 
 		.edu-inner {
