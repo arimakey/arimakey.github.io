@@ -33,8 +33,8 @@ const items = [
 	<h2 class="edu-title">Education & Recognition</h2>
 	<div class="edu-grid">
 		{items.map((item, i) => (
-			<article class="edu-card" style="--accent:{item.color};--i:{i}" data-i={i}>
-				<div class="edu-top" style="background:{item.color}"></div>
+			<article class="edu-card" data-i={i} style={{ '--accent': item.color, '--i': i }}>
+				<div class="edu-top" style={{ background: item.color }}></div>
 				<div class="edu-inner">
 					<span class="edu-stamp">{item.date || "—"}</span>
 					<h3 class="edu-name">{item.title}</h3>

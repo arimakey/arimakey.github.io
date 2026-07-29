@@ -32,7 +32,7 @@ const companies = [
 
 	<div class="timeline">
 		{companies.map((c, i) => (
-			<div class="tl-item" style="--i: {i}">
+			<div class="tl-item" data-i={i} style={{ '--i': i }}>
 				<div class="tl-badge">
 					<img src={c.logo} alt="" />
 				</div>
@@ -82,7 +82,6 @@ const companies = [
 	.tl-item {
 		position: relative;
 		margin-bottom: 2.5rem;
-		perspective: 800px;
 		animation: tlSlideUp 0.5s ease both;
 		animation-delay: calc(var(--i) * 0.12s);
 	}
@@ -96,11 +95,12 @@ const companies = [
 		z-index: 1;
 		box-shadow: 4px 4px 0 var(--primary-color);
 		overflow: hidden;
-		transition: transform 0.3s ease;
+		transition: transform 0.25s ease, box-shadow 0.25s ease;
 	}
 
 	.tl-item:hover .tl-badge {
-		transform: rotateY(20deg) rotateX(-8deg) scale(1.1);
+		transform: scale(1.15);
+		box-shadow: 8px 8px 0 var(--primary-color);
 	}
 
 	.tl-badge::before {
