@@ -1,41 +1,49 @@
 ---
-import TextureFilter from '../TextureFilter.astro'
-import Technologies from './Technologies.astro'
-import list_technologies from '../../data/technologies'
-import descriptions from '../../data/tech-descriptions.js'
+import TextureFilter from "../TextureFilter.astro";
+import Technologies from "./Technologies.astro";
+import list_technologies from "../../data/technologies";
+import descriptions from "../../data/tech-descriptions.js";
 
 const techNames = {
-    html: 'HTML',
-    css: 'CSS',
-    javascript: 'JavaScript',
-    typescript: 'TypeScript',
-    tailwind: 'Tailwind CSS',
-    react: 'React',
-    nextjs: 'Next.js',
-    java: 'Java',
-    bash: 'Bash',
-    docker: 'Docker',
-    git: 'Git',
-    github: 'GitHub',
-    postgresql: 'PostgreSQL',
-    mongodb: 'MongoDB',
-    aws: 'AWS',
-    heroku: 'Heroku',
-    code: 'C++',
-    cpp: 'C++',
-}
+    html: "HTML",
+    css: "CSS",
+    javascript: "JavaScript",
+    typescript: "TypeScript",
+    tailwind: "Tailwind CSS",
+    react: "React",
+    nextjs: "Next.js",
+    java: "Java",
+    bash: "Bash",
+    docker: "Docker",
+    git: "Git",
+    github: "GitHub",
+    postgresql: "PostgreSQL",
+    mongodb: "MongoDB",
+    aws: "AWS",
+    heroku: "Heroku",
+    code: "C++",
+    cpp: "C++",
+};
 ---
 
 <section class="technologies" id="technologies">
     <div class="technologies__container">
         <h3 class="technologies__title">Technologies</h3>
         {
-            list_technologies["en"].map((technolgy, index) =>(<Technologies {...technolgy} direction={index % 2 == 0 ? "right" : "left"}/>))
+            list_technologies["en"].map((technolgy, index) => (
+                <Technologies
+                    {...technolgy}
+                    direction={index % 2 == 0 ? "right" : "left"}
+                />
+            ))
         }
-        <hr>
+        <hr />
     </div>
     <div class="technologies__image__container">
-        <TextureFilter src='resources/images/technologies-new.png' transition="none"/>
+        <TextureFilter
+            src="resources/images/technologies-new.png"
+            transition="none"
+        />
     </div>
     <dialog id="tech-dialog">
         <div class="tech-dlg-inner">
@@ -50,44 +58,45 @@ const techNames = {
 <script define:vars={{ descriptions, techNames }}>
     const NAMES = techNames;
 
-    const dialog = document.getElementById('tech-dialog');
-    const dlgIcon = document.getElementById('tech-dlg-icon');
-    const dlgName = document.getElementById('tech-dlg-name');
-    const dlgDesc = document.getElementById('tech-dlg-desc');
-    const closeBtn = dialog.querySelector('.tech-dlg-close');
+    const dialog = document.getElementById("tech-dialog");
+    const dlgIcon = document.getElementById("tech-dlg-icon");
+    const dlgName = document.getElementById("tech-dlg-name");
+    const dlgDesc = document.getElementById("tech-dlg-desc");
+    const closeBtn = dialog.querySelector(".tech-dlg-close");
 
-    document.querySelector('.technologies__container').addEventListener('click', (e) => {
-        const btn = e.target.closest('.tech-btn');
-        if (!btn) return;
-        const tech = btn.dataset.tech;
-        if (!tech) return;
-        const name = NAMES[tech] || tech;
-        const desc = descriptions[tech] || '';
+    document
+        .querySelector(".technologies__container")
+        .addEventListener("click", (e) => {
+            const btn = e.target.closest(".tech-btn");
+            if (!btn) return;
+            const tech = btn.dataset.tech;
+            if (!tech) return;
+            const name = NAMES[tech] || tech;
+            const desc = descriptions[tech] || "";
 
-        const svg = btn.querySelector('svg');
-        dlgIcon.innerHTML = '';
-        if (svg) {
-            const clone = svg.cloneNode(true);
-            clone.removeAttribute('width');
-            clone.removeAttribute('height');
-            dlgIcon.appendChild(clone);
-        }
+            const svg = btn.querySelector("svg");
+            dlgIcon.innerHTML = "";
+            if (svg) {
+                const clone = svg.cloneNode(true);
+                clone.removeAttribute("width");
+                clone.removeAttribute("height");
+                dlgIcon.appendChild(clone);
+            }
 
-        dlgName.textContent = name;
-        dlgDesc.textContent = desc;
-        dialog.showModal();
-    });
+            dlgName.textContent = name;
+            dlgDesc.textContent = desc;
+            dialog.showModal();
+        });
 
-    closeBtn.addEventListener('click', () => dialog.close());
+    closeBtn.addEventListener("click", () => dialog.close());
 
-    dialog.addEventListener('click', (e) => {
+    dialog.addEventListener("click", (e) => {
         if (e.target === dialog) dialog.close();
     });
 </script>
 
 <style>
     .technologies__title {
-		margin-bottom: 1.5rem;
         color: var(--contrast-text);
         background-color: var(--primary-color);
         font-size: 1rem;
@@ -125,7 +134,9 @@ const techNames = {
     }
 
     @keyframes dlgIn {
-        from { opacity: 0; }
+        from {
+            opacity: 0;
+        }
     }
 
     #tech-dialog::backdrop {
@@ -195,7 +206,7 @@ const techNames = {
         .technologies {
             display: flex;
             flex-direction: row;
-            gap: 1rem
+            gap: 1rem;
         }
 
         .technologies__title {
@@ -210,7 +221,14 @@ const techNames = {
             height: auto;
             overflow: hidden;
             object-fit: cover;
-            clip-path: polygon(0 0, calc(100% - 1.5rem) 0%, 100% 1.5rem ,  100% 100%, 1.5rem 100%, 0% calc(100% - 1.5rem));
+            clip-path: polygon(
+                0 0,
+                calc(100% - 1.5rem) 0%,
+                100% 1.5rem,
+                100% 100%,
+                1.5rem 100%,
+                0% calc(100% - 1.5rem)
+            );
         }
 
         .technologies__container {
