@@ -10,20 +10,68 @@ import Education from "../components/index/Education.astro";
 ---
 
 <Layout title="Martin Robles" description="Full Stack Developer — Portfolio">
-    <main>
-        <IndexHeader />
-        <TechnologiesGrid />
-        <Experience />
-        <ProjectsGrid />
-        <Education />
-    </main>
+	<meta name="base" content={import.meta.env.BASE_URL} />
+	<div id="project-detail" style="display:none"></div>
+	<main id="main-content">
+		<IndexHeader />
+		<TechnologiesGrid />
+		<Experience />
+		<ProjectsGrid />
+		<Education />
+	</main>
 </Layout>
 
 <style>
-    main {
-        display: flex;
-        flex-direction: column;
-        gap: 4rem;
-        margin: 2rem 0rem;
-    }
+	main {
+		display: flex;
+		flex-direction: column;
+		gap: 4rem;
+		margin: 2rem 0rem;
+	}
 </style>
+
+<script>
+	const BASE = document.querySelector('meta[name="base"]')?.getAttribute('content') ?? '/';
+
+	function parse() {
+		const h = location.hash.replace('#', '') || '/';
+		const m = h.match(/^\/projects\/(.+)/);
+		return m ? { type: 'project', slug: m[1] } : { type: 'home' };
+	}
+
+	async function render() {
+		const r = parse();
+		const main = document.getElementById('main-content');
+		const detail = document.getElementById('project-detail');
+		if (!main || !detail) return;
+
+		if (r.type === 'project') {
+			const b = BASE.replace(/\/?$/, '/');
+			const url = `${b}projects/${r.slug}/`;
+			try {
+				const res = await fetch(url);
+				if (!res.ok) throw new Error('404');
+				const html = await res.text();
+				const dom = new DOMParser().parseFromString(html, 'text/html');
+				const pd = dom.querySelector('.pd');
+				if (pd) {
+					detail.innerHTML = '';
+					detail.appendChild(document.adoptNode(pd));
+					main.style.display = 'none';
+					detail.style.display = 'block';
+					return;
+				}
+			} catch {}
+			detail.innerHTML = '<p style="padding:2rem">Project not found.</p>';
+			main.style.display = 'none';
+			detail.style.display = 'block';
+		} else {
+			main.style.display = '';
+			detail.style.display = 'none';
+			detail.innerHTML = '';
+		}
+	}
+
+	window.addEventListener('hashchange', render);
+	window.addEventListener('DOMContentLoaded', render);
+</script>

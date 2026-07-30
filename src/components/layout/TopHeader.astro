@@ -4,7 +4,7 @@ const { title, date, subtitle } = Astro.props;
 
 <section>
 	<div class="header__title" transition:name="header">
-		<a href="/"><h1 class="header__title__name">{ title }</h1></a>
+		<a href={import.meta.env.BASE_URL || '/'}><h1 class="header__title__name">{ title }</h1></a>
 		<div class="header__title_subtitle">
 			<p class="header__title__subtitle__date">{ date }</p>
 			<h2 class="header__title_subtitle__profession">{ subtitle }</h2>

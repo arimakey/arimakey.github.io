@@ -17,7 +17,7 @@ import Layout from '../layouts/Layout.astro';
 			<p class="not-found__sub">
 				While our editors figure out what happened, why not return to the front page?
 			</p>
-			<a href="/" class="large__button">
+			<a href={import.meta.env.BASE_URL || '/'} class="large__button">
 				<ion-icon name="newspaper-outline"></ion-icon>
 				Back to Front Page
 			</a>

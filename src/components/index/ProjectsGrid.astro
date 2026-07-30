@@ -15,7 +15,7 @@ const project_rest = 3 - projects.length;
         <div class="project__content__container">
             {
                 projects.map(project => (
-                    <Project image={project.data.heroImage}  title={project.data.title} slug={`/projects/${project.id.split('/').pop()!.replace('.mdx', '')}`} />
+                    <Project image={project.data.heroImage}  title={project.data.title} slug={`#/projects/${project.id.split('/').pop()!.replace('.mdx', '')}`} />
                 ))
             }
             {
